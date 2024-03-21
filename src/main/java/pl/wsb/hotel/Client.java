@@ -9,8 +9,8 @@ public class Client {
     String firstName;
     String lastName;
     LocalDate birthDate;
+    String sex;
     String address;
-    String work;
     String education;
 
     public Client() {
@@ -28,6 +28,16 @@ public class Client {
         this.birthDate = birthDate;
     }
 
+    public Client(String id, String firstName, String lastName, LocalDate birthDate, String sex, String address, String education) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.sex = sex;
+        this.address = address;
+        this.education = education;
+    }
+
     public String getFullName(){
         return this.firstName + " " + this.lastName;
     }
@@ -43,4 +53,16 @@ public class Client {
         return period.getYears();
     }
 
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                ", sex='" + sex + '\'' +
+                ", address='" + address + '\'' +
+                ", education='" + education + '\'' +
+                '}';
+    }
 }
