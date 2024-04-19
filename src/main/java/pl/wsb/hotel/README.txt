@@ -1,6 +1,4 @@
-Dodałem metode toString() dla szybszego sprawdzania zmiennych w klasie
-
-package pl.wsb.hotel;
+package pl.wsb.hotel.hotelClass;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -69,8 +67,23 @@ public class Client {
     }
 }
 
+package pl.wsb.hotel.hotelClass;
 
-package pl.wsb.hotel;
+import pl.wsb.hotel.hotelClass.Client;
+
+public class PremiumClient extends Client {
+
+    enum premiumAccountType {
+        PREMIUM,
+        PREMIUM_PLUS
+    }
+
+    public String getFullName(){
+        return "[premium] " + this.firstName + " " + this.lastName;
+    }
+}
+
+package pl.wsb.hotel.hotelClass;
 
 public class Room {
 
@@ -116,8 +129,10 @@ public class Room {
     }
 }
 
+package pl.wsb.hotel.hotelClass;
 
-package pl.wsb.hotel;
+import pl.wsb.hotel.hotelClass.Client;
+import pl.wsb.hotel.hotelClass.Room;
 
 import java.time.LocalDate;
 
@@ -154,5 +169,183 @@ public class RoomReservation {
 
     public boolean getIsConfirmed() {
         return isConfirmed;
+    }
+}
+
+package pl.wsb.hotel.mainClass;
+
+import pl.wsb.hotel.hotelClass.Client;
+import pl.wsb.hotel.hotelClass.Room;
+import pl.wsb.hotel.hotelClass.RoomReservation;
+import pl.wsb.hotel.service.SpecialService;
+
+import java.util.*;
+
+public class Hotel {
+
+    private String name;
+    private List<SpecialService> specialServices;
+    private List<Client> clients;
+    private List<Room> rooms;
+    private List<RoomReservation> reservations;
+
+    public Hotel() {
+    }
+
+    public Hotel(String name) {
+        this.name = name;
+        this.specialServices = new LinkedList<SpecialService>();
+        this.clients = new LinkedList<Client>();
+        this.rooms = new LinkedList<Room>();
+        this.reservations = new LinkedList<RoomReservation>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<SpecialService> getSpecialServices() {
+        return specialServices;
+    }
+
+    public void setSpecialServices(List<SpecialService> specialServices) {
+        this.specialServices = specialServices;
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public List<RoomReservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<RoomReservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "name='" + name + '\'' +
+                ", specialServices=" + specialServices +
+                ", clients=" + clients +
+                ", rooms=" + rooms +
+                ", reservations=" + reservations +
+                '}';
+    }
+}
+
+package pl.wsb.hotel.other;
+
+import com.ibm.icu.util.Calendar;
+import com.ibm.icu.util.TimeZone;
+
+import java.util.Date;
+
+
+public class Time {
+
+    private int year;
+    private int month;
+    private int day;
+    private int hour;
+    private int minute;
+    private int second;
+    private int millis;
+
+    public Time() {
+        Calendar calendar = Calendar.getInstance();
+        Date later = new Date();
+        calendar.setTime(later);
+        calendar.setTimeZone(TimeZone.getTimeZone("Europe/Warsaw"));
+
+        this.year = calendar.get(Calendar.YEAR);
+        this.month = calendar.get(Calendar.MONTH);
+        this.day = calendar.get(Calendar.DAY_OF_MONTH);
+        this.hour = calendar.get(Calendar.HOUR);
+        this.minute = calendar.get(Calendar.MINUTE);
+        this.second = calendar.get(Calendar.SECOND);
+        this.millis = calendar.get(Calendar.MILLISECOND);
+    }
+
+    public String getNowTime(){
+        return this.hour + ":" + this.minute + ":" + this.second;
+    }
+
+
+}
+
+package pl.wsb.hotel.service;
+
+public class LuggageService extends SpecialService {
+
+    public LuggageService() {
+    }
+
+    @Override
+    public void orderService() {
+        System.out.println("The hotel stores the customer's luggage in a safe place");
+    }
+}
+
+package pl.wsb.hotel.service;
+
+public abstract class SpecialService {
+    private String name;
+
+    public SpecialService() {
+    }
+
+    public SpecialService(String name) {
+        this.name = name;
+    }
+
+    public abstract void orderService();
+
+    /*
+        Trzeba dodać dwie metody abstrakcyjne by wykonać zadanie z gwiazdką
+     */
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+package pl.wsb.hotel.service;
+
+import pl.wsb.hotel.other.Time;
+
+public class TimeService extends SpecialService {
+
+    private Time time;
+
+    public TimeService() {
+        this.time = new Time();
+    }
+
+    @Override
+    public void orderService() {
+        System.out.println(time.getNowTime());
     }
 }

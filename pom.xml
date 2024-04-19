@@ -25,6 +25,11 @@
 
     <dependencies>
         <!-- Add your dependencies here! -->
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>58.1</version>
+        </dependency>
     </dependencies>
 
 </project>
