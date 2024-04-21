@@ -35,5 +35,9 @@ public class Time {
         return this.hour + ":" + this.minute + ":" + this.second;
     }
 
+    public String getDateNow(){
+        return this.year + "-" + this.month + "-" + this.day;
+    }
+
 
 }

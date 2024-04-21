@@ -4,9 +4,7 @@ import pl.wsb.hotel.hotelClass.Client;
 import pl.wsb.hotel.hotelClass.Room;
 import pl.wsb.hotel.hotelClass.RoomReservation;
 import pl.wsb.hotel.mainClass.Hotel;
-import pl.wsb.hotel.service.LuggageService;
-import pl.wsb.hotel.service.SpecialService;
-import pl.wsb.hotel.service.TimeService;
+import pl.wsb.hotel.service.*;
 
 import java.time.LocalDate;
 
@@ -50,9 +48,13 @@ public class Run {
 
         LuggageService luggageService = new LuggageService();
         TimeService timeService = new TimeService();
+        DateService dateService = new DateService();
+        InfoHotel infoHotel = new InfoHotel();
 
         luggageService.orderService();
         timeService.orderService();
+        dateService.orderService();
+        infoHotel.orderService();
 
 
 
