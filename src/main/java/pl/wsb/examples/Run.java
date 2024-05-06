@@ -30,12 +30,12 @@ public class Run {
                 ,5
                 ,true
                 ,true
-                , 5
+                , "-"
                 ,25);
         //System.out.println(room.toString());
 
         LocalDate dateReservation = LocalDate.of(2024,3,21);
-        RoomReservation roomReservation = new RoomReservation(dateReservation,client,room);
+        RoomReservation roomReservation = new RoomReservation(1,dateReservation,client,room);
         /* Wyłączone z użytku na potrzeby sprawdzenia zadania nr 2
         System.out.println(roomReservation.toString());
         System.out.println(roomReservation.getIsConfirmed());

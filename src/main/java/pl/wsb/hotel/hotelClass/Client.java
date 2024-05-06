@@ -65,4 +65,32 @@ public class Client {
                 ", education='" + education + '\'' +
                 '}';
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getEducation() {
+        return education;
+    }
 }
