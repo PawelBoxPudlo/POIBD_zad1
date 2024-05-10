@@ -208,8 +208,6 @@ public class Hotel implements HotelCapability {
     @Override
     public String addNewReservation(String clientId, String roomId, LocalDate date) throws ClientNotFoundException, RoomNotFoundException, RoomReservedException {
 
-
-
             boolean checkExistElementClientId = false;
             boolean checkExistElementRoomId = false;
             Client client = null;
